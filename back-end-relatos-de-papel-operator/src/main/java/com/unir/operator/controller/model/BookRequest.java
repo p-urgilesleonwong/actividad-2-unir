@@ -15,10 +15,10 @@ import lombok.Setter;
 @NoArgsConstructor
 public class BookRequest {
     @NotNull(message = "`id` cannot be null")
-    @NotEmpty(message = "`id` cannot be empty")
-    private String ID;
+    @Positive(message = "`id` must be integer greater than 0")
+    private Integer ID;
     @NotNull(message = "`quantity` cannot be null")
-    @Positive(message = "`quantity` cannot be empty")
+    @Positive(message = "`id` must be integer greater than 0")
     private Integer quantity;
 
 }

@@ -41,8 +41,8 @@ eureka:
     preferIpAddress: true
     hostname: ms-books-payments
 
-## Configuracion secundaria (custom) TODO change for url of books service
+## Configuracion secundaria (custom)
 getBook:
-  url: http://ms-books-catalogue/book/%s
+  url: http://ms-books-catalogue/books/%s
 
 

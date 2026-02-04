@@ -18,7 +18,7 @@ public class BookFacade {
 
     private final WebClient.Builder webClient;
 
-    public Book getBook(String id) {
+    public Book getBook(Integer id) {
         try {
             String url = String.format(getBookUrl, id);
             log.info("Getting book with ID {}. Request to {}", id, url);
