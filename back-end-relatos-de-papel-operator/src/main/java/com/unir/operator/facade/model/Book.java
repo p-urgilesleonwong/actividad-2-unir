@@ -1,5 +1,6 @@
 package com.unir.operator.facade.model;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,4 +22,5 @@ public class Book {
     private String year;
     private String description;
     private Integer stock;
+    private Boolean visible;
 }

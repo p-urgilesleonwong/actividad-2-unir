@@ -21,14 +21,14 @@ public class OperatorServiceImpl implements OperatorService {
     public Order createOrder(OperatorRequest request) {
         List<com.unir.operator.data.model.Book> books = request.getBooks().stream()
                 .map(bookRequest -> {
-                    Book bookFromFacade = bookFacade.getBook(bookRequest.getID());
-                    if (bookFromFacade != null) {
-                        return com.unir.operator.data.model.Book.builder()
-                                .id(bookFromFacade.getId())
-                                .unit(bookRequest.getQuantity())
-                                .build();
+                    Book bookFromFacade = bookFacade.getBook(bookRequest.getId());
+                    if (bookFromFacade == null || !Boolean.TRUE.equals(bookFromFacade.getVisible())) {
+                        throw new RuntimeException("El libro con ID " + bookRequest.getId() + " no está disponible o no es visible");
                     }
-                    return null;
+                    return com.unir.operator.data.model.Book.builder()
+                            .id(bookFromFacade.getId())
+                            .unit(bookRequest.getQuantity())
+                            .build();
                 })
                 .filter(java.util.Objects::nonNull)
                 .collect(Collectors.toList());

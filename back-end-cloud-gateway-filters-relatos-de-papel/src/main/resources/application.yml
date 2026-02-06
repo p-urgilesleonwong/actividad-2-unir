@@ -27,13 +27,6 @@ spring:
             locator:
               enabled: true
               lower-case-service-id: true
-          routes:
-            - id: catalogue
-              uri: lb://ms-books-catalogue
-              predicates:
-                - Path=/catalogue/**
-              filters:
-                - StripPrefix=1
           default-filters:
             - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
           globalcors:
@@ -42,11 +35,7 @@ spring:
                 allowedOrigins: ${ALLOWED_ORIGINS:*} # With '*' we allow all origins. We can restrict by indicating domains or ip + port, e.g. http://localhost:3000 (where our front is, or a Vercel domain)
                 allowedHeaders: "*" ## All headers allowed
                 allowedMethods:
-                  - GET
                   - POST
-                  - PUT
-                  - DELETE
-                  - OPTIONS
 
 ## We enable the Actuator API to be able to access <<host>>/actuator/gateway/routes
 ## We expose the routings that have been automatically detected (all)

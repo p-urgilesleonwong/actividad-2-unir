@@ -16,7 +16,7 @@ import lombok.Setter;
 public class BookRequest {
     @NotNull(message = "`id` cannot be null")
     @Positive(message = "`id` must be integer greater than 0")
-    private Integer ID;
+    private Integer id;
     @NotNull(message = "`quantity` cannot be null")
     @Positive(message = "`id` must be integer greater than 0")
     private Integer quantity;

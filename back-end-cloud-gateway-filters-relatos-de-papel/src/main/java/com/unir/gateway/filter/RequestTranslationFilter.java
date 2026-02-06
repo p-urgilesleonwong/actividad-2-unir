@@ -45,9 +45,12 @@ public class RequestTranslationFilter implements GlobalFilter {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
         HttpMethod method = exchange.getRequest().getMethod();
+        if (method != HttpMethod.POST) {
+            exchange.getResponse().setStatusCode(HttpStatus.METHOD_NOT_ALLOWED);
+            return exchange.getResponse().setComplete();
+        }
 
-
-        if (method == null || method == HttpMethod.GET || method == HttpMethod.DELETE) {
+        if (method == null || method == HttpMethod.DELETE) {
             return chain.filter(exchange);
         }
 
